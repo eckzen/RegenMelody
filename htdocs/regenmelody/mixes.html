@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Erick Montoya">
+    <title>Regenmelody</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Background Video Container -->
+<div class="video-container">
+    <video id="backgroundVideo" autoplay muted loop>
+        <source src="media/video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<!-- Button to Change Video -->
+<button type="button" class="btn btn-primary btn-change-video" id="btn-change-video">
+    Cambiar Video
+</button>
+
+<!--Div para que el footer permanezca al final-->
+<div class="wrapper"> 
+
+<!-- Navbar -->
+<header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Regenmelody</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Mixes</a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+            </li>
+            
+        </ul>
+    </div>
+</nav>
+</header>
+<!-- Main Content -->
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mt-5">
+                <h1 class="display-4">Regenmelody</h1>
+                <p class="lead">Relájate con sonidos ambientales</p>
+            </div>
+        </div>
+
+        <!-- Guardar Mix -->
+        <div class="container">
+          <div class="row mt-4">
+            <div id="sound-cards">
+              </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div id="selected-mixes-container">
+                <h5>Mixes seleccionados</h5>
+                <ul id="selected-mixes-list">
+                  </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn btn-primary" id="save-mix-btn">Guardar Mix</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recuperar Mix -->
+        <div class="container">
+          <div class="row mt-4 justify-content-center"> <!-- Añadido justify-content-center para centrar -->
+              <div class="col-md-6">
+                  <div id="saved-mixes-container" style="background-color: whitesmoke; padding: 10px;">
+                      <h5>Mixes Guardados</h5>
+                      <ul id="saved-mixes-list"></ul>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <button type="button" class="btn btn-primary" id="load-mix-btn">Recuperar Mixes</button>
+              </div>
+          </div>
+      </div>
+
+
+
+        <div class="row mt-4">
+            <!-- Sound Controls -->
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="media/Rainy.jpg" alt="" data-sound="rain.mp3">
+                    <div class="card-body">
+                        <h5 class="card-title">Rain</h5>
+                        <input type="range" class="custom-range" id="rainVolume" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="media/lightning.jpeg" alt="" data-sound="thunder.mp3">
+                    <div class="card-body">
+                        <h5 class="card-title">Thunder</h5>
+                        <input type="range" class="custom-range" id="thunderVolume" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="media/waves.jpg" alt="" data-sound="waves.mp3">
+                    <div class="card-body">
+                        <h5 class="card-title">Waves</h5>
+                        <input type="range" class="custom-range" id="wavesVolume" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="media/river.jpg" alt="" data-sound="rivers.mp3">
+                    <div class="card-body">
+                        <h5 class="card-title">Rivers</h5>
+                        <input type="range" class="custom-range" id="riversVolume" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="media/birds.jpg" alt="" data-sound="birds.mp3">
+                    <div class="card-body">
+                        <h5 class="card-title">Birds</h5>
+                        <input type="range" class="custom-range" id="birdsVolume" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="media/fire.jpeg" alt="" data-sound="fire.mp3">
+                    <div class="card-body">
+                        <h5 class="card-title">Fire</h5>
+                        <input type="range" class="custom-range" id="fireVolume" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="media/Fireflies.jpg" alt="" data-sound="crickets.mp3">
+                    <div class="card-body">
+                        <h5 class="card-title">Grillos</h5>
+                        <input type="range" class="custom-range" id="cricketsVolume" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="media/wind.jpg" alt="" data-sound="wind.mp3">
+                    <div class="card-body">
+                        <h5 class="card-title">Wind</h5>
+                        <input type="range" class="custom-range" id="windVolume" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Botón ir hacia arriba -->
+<button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+<!-- Footer -->
+
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 footer-column">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <span class="footer-title">Product</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Product 1</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 footer-column">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <span class="footer-title">Company</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us</a>
+          </ul>
+        </div>
+        <div class="col-md-4 footer-column">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <span class="footer-title">Contacto</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-envelope"></i>Contact us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="text-center" id="pstore"><i class="fa-brands fa-google-play"></i></div>
+      
+      <div class="row text-center">
+        <div class="col-md-4 box">
+          <span class="copyright quick-links">Copyright &copy; Regenmelody <script>document.write(new Date().getFullYear())</script>
+          </span>
+        </div>
+        <div class="col-md-4 box">
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 box">
+          <ul class="list-inline quick-links">
+            <li class="list-inline-item">
+              <a href="#">Política de privacidad</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Normas de uso</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!-- JS -->
+<script src="js/scripts.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const sounds = {};
+  
+    document.querySelectorAll('.card img').forEach(img => {
+        const sound = new Audio(`media/${img.dataset.sound}`);
+        sound.loop = true;  // Hacer que los sonidos se reproduzcan en bucle
+        sounds[img.dataset.sound] = sound;
+        // Función anónima que mantiene el play al hacer click en una imagen, la cual mantiene el hover active
+        img.addEventListener('click', function() {
+            if (sound.paused) {
+                sound.play();
+            } else {
+                sound.pause();
+            }
+            img.classList.toggle('active');
+        });
+    });
+  
+    // Variables que toman id
+    const rainVolume = document.getElementById("rainVolume");
+    const thunderVolume = document.getElementById("thunderVolume");
+    const wavesVolume = document.getElementById("wavesVolume");
+    const riversVolume = document.getElementById("riversVolume");
+    const birdsVolume = document.getElementById("birdsVolume");
+    const fireVolume = document.getElementById("fireVolume");
+    const cricketsVolume = document.getElementById("cricketsVolume");
+    const windVolume = document.getElementById("windVolume");
+  
+    /* Control de volumen input */
+    const volumeControls = {
+      rainVolume: "rain.mp3",
+      thunderVolume: "thunder.mp3",
+      wavesVolume: "waves.mp3",
+      riversVolume: "rivers.mp3",
+      birdsVolume: "birds.mp3",
+      fireVolume: "fire.mp3",
+      cricketsVolume: "crickets.mp3",
+      windVolume: "wind.mp3"
+    };
+  
+    // Funciones play
+    Object.keys(volumeControls).forEach(controlId => {
+      const control = document.getElementById(controlId);
+      control.addEventListener("input", function() {
+        const soundFile = volumeControls[controlId];
+        if (sounds[soundFile]) {
+          sounds[soundFile].volume = control.value / 100;
+        }
+      });
+    });
+  
+    function playSound(audioId) {
+      const audioElement = document.getElementById(audioId);
+      if (audioElement.paused) {
+        audioElement.play();
+      } else {
+        audioElement.pause();
+      }
+    }
+  
+    // Mixes
+    function saveMix() {
+      // Get selected sounds and volume levels
+      const selectedSounds = [];
+      const soundCards = document.querySelectorAll('.card');
+      for (const card of soundCards) {
+        const soundId = card.querySelector('img').dataset.sound;
+        const volume = card.querySelector('.custom-range').value;
+        if (volume > 0) {
+          selectedSounds.push({ soundId, volume });
+        }
+      }
+  
+      // Check if any sounds are selected
+      if (selectedSounds.length === 0) {
+        alert('Seleccione al menos un sonido para guardar una mezcla.');
+        return;
+      }
+  
+      // Get mix name
+      const mixName = prompt('Introduce el nombre de tu mix:');
+      if (!mixName) {
+        alert('El nombre del mix es obligatorio.');
+        return;
+      }
+  
+      // Send AJAX request to save the mix
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'saveMix.php');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          if (response.success) {
+            alert('Mix guardado con éxito!');
+          } else {
+            alert('Error al guardar el mix: ' + response.error);
+          }
+        } else {
+          alert('Error guardando el mix: ' + xhr.statusText);
+        }
+      };
+      xhr.send(JSON.stringify({ mixName, selectedSounds }));
+    }
+  
+    // Add event listener to the "Save Mix" button
+    const saveMixBtn = document.getElementById('save-mix-btn');
+    saveMixBtn.addEventListener('click', saveMix);
+
+    //Recuperar Mixes
+
+    loadSavedMixes();
+
+    // Add event listener to the "Recuperar Mixes" button
+    const loadMixBtn = document.getElementById('load-mix-btn');
+    loadMixBtn.addEventListener('click', loadSavedMixes);
+
+    // Function to load saved mixes
+    function loadSavedMixes() {
+  fetch('get_mixes.php')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('La respuesta de la red no fue correcta');
+      }
+      return response.json(); // Analizar la respuesta como JSON directamente
+    })
+    .then(data => {
+      const savedMixesList = document.getElementById("saved-mixes-list");
+      savedMixesList.innerHTML = ''; // Limpiar la lista existente
+      data.forEach(mix => {
+        const soundDetails = mix.sounds.map(sound => `[${sound.volume}] ${sound.soundId}`);
+        const li = document.createElement("li");
+        li.textContent = `Mix: ${mix.name}, Sonidos: ${soundDetails.join(', ')}`;
+        savedMixesList.appendChild(li);
+      });
+    })
+    .catch(error => console.error('Error al obtener mixes:', error));
+}
+  });
+
+  
+  </script>
+</script>
+
+</body>
+</html>
+
